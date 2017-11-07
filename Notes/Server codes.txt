@@ -1,0 +1,46 @@
+Enter Server:
+ssh -i server1.pem ubuntu@kserver1.servehttp.com
+ssh -i server2.pem ubuntu@kserver2.servehttp.com
+ssh -i server1.pem ubuntu@18.216.105.138
+ubuntu@18.216.105.138:8080
+ssh -i ~/keys/server1.pem ubuntu@kserver1.servehttp.com
+ssh -i ~/Desktop/Ansible_sever_test/server2.pem ubuntu@kserver2.servehttp.com
+
+
+Send Files:
+scp -i server1.pem server2.pem ubuntu@kserver1.servehttp.com:~/keys/
+scp -i server2.pem server1.pem ubuntu@kserver2.servehttp.com:~/keys/
+scp -i server1.pem ~/Desktop/Ansible_sever_test/resources/test.html ubuntu@kserver1.servehttp.com:~/practice1/
+scp -i server1.pem ~/Desktop/Ansible_sever_test/practice1/practice1.yml ubuntu@kserver1.servehttp.com:~/practice1/
+
+
+Linux command:
+	pwd             current directory
+	mkdir			make directory
+	cd				change to directory
+
+Playbooks:
+	ansible-playbook ~/practice1/practice1.yml
+	ansible-playbook ~/practice2/practice2test.yml
+	ansible-playbook ~/practice2/running_JAVA.yml
+
+	java -jar ~/practice2/SpringBoot1-0.0.1-SNAPSHOT.jar
+    nohup java -jar ~/practice2/SpringBoot-0.0.1-SNAPSHOT.jar &
+
+Edit ansible files:
+	sudo vi /etc/ansible/hosts
+	[servers]
+	ubuntu@kserver2.servehttp.com ansible_ssh_private_key_file=~/keys/server2.pem
+
+	sudo mkdir /etc/ansible/group_vars
+	sudo vi /etc/ansible/group_vars/servers
+	---
+	ansible_ssh_user: root
+	ssh-agent bash
+	ssh-add ~/keys/server2.pem
+	
+Adjust Permmission:
+	chmod 400 ~/keys/server1.pem 
+	chmod 400 ~/keys/server2.pem 
+
+git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all

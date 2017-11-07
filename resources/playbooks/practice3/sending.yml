@@ -1,0 +1,11 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+
+- hosts: servers
+  remote_user: root
+  
+  tasks:
+  - copy:
+      src: ~/practice2/SpringBoot.jar
+      dest: ~/practice2/SpringBoot.jar

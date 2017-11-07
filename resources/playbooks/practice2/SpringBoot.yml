@@ -1,0 +1,19 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+      
+- hosts: servers
+  remote_user: root
+  tasks:
+  - copy:
+      src: ~/practice2/SpringBoot.jar
+      dest: ~/practice2/SpringBoot.jar
+      
+  - name: installing SpringBoots server
+      shell: "java -jar ~/practice2/SpringBoot.jar"
+
+- hosts: localhost
+  remote_user: root
+  tasks:
+  - name: installing
+    shell:"java -jar ~/practice2/SpringBoot1-0.0.1-SNAPSHOT.jar"
